@@ -2,17 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use(express.static('public'));
 
 const API_ENDPOINT = 'https://api.mistral.ai/v1/chat/completions';
 const API_KEY = process.env.MISTRAL_API_KEY;
 
-app.post('/query', async (req, res) => {
+app.post('/api/query', async (req, res) => {
     const question = req.body.question;
     try {
         const response = await axios.post(API_ENDPOINT, {
@@ -37,7 +40,13 @@ app.post('/query', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// Export the Express API
+module.exports = app;
+
+// Only start the server if we're running directly (not being imported by Vercel)
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}

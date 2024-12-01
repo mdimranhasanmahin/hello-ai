@@ -1,4 +1,11 @@
 {
+  "name": "hello-ai",
+  "version": "1.0.0",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js",
+    "vercel-build": "echo 'Building...'"
+  },
   "dependencies": {
     "axios": "^1.7.7",
     "cors": "^2.8.5",
