@@ -63,7 +63,7 @@
                 <h2 class="text-xl font-bold text-gray-600">History</h2></div>
             <div 
                 id="history-container" 
-                class="flex-grow overflow-y-auto border border-gray-300 rounded p-3"
+                class="flex-grow overflow-y-auto border border-gray-400 rounded p-3"
                 style="max-height: 500px; scrollbar-width: thin; scrollbar-color: gray-300 #f1f1f1;"
             >
                 <!-- History items go here -->
@@ -73,12 +73,12 @@
         <!-- Main Chat Area -->
         <div class="main-chat flex-grow bg-white rounded-lg shadow-lg p-4 flex flex-col">
             <div class="flex justify-between items-center mb-4">
-                <h1 class="chat-title text-xl sm:text-4xl font-bold text-blue-600">AI Study Partner</h1>
+                <h1 class="chat-title text-xl sm:text-4xl font-bold text-blue-600">Hello AI</h1>
                 <button id="refresh-chat" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Refresh</button>
             </div>
             <div 
                 id="chat-container" 
-                class="flex-grow mb-4 overflow-y-auto border border-gray-300 rounded p-4"
+                class="flex-grow mb-4 overflow-y-auto border border-gray-400 rounded p-4"
                 style="max-height: 450px; scrollbar-width: thin; scrollbar-color: gray-300 #f1f1f1;"
             >
                 <!-- Chat messages go here -->
@@ -132,7 +132,7 @@
             const preview = message.length > 50 ? message.substring(0, 50) + '...' : message;
 
             historyElement.innerHTML = `
-                <div class="flex justify-between items-center gap-2">
+                <div class="flex justify-between bg-blue-50 items-center gap-2">
                     <div class="flex-grow min-w-0">
                         <div class="text-xs text-gray-500">${time}</div>
                         <div class="text-black-700 truncate">${preview}</div>
